@@ -20,11 +20,34 @@
         handlekurv = new ArrayList();
     }
     
-    if (request.getParameter("item") != null){
-        handlekurv.add(request.getParameter("item"));
+    session.setAttribute("handleKurv", handlekurv);
+    
+    String item = (String) request.getParameter("item");
+    if (item != null){
+        handlekurv.add(item);
     }
     
-    session.setAttribute("handleKurv", handlekurv);
+    Cookie[] cookies = request.getCookies();
+    Cookie c = null;
+    
+    if (cookies != null){
+        for (Cookie cs: cookies){
+            if (cs.getName() == "lastSelected"){
+                c = cs;
+            }
+        }
+    }
+    
+    String selected = "";
+    
+    if (c != null){
+        selected = c.getValue();
+    }else{
+        c = new Cookie("lastSelected", item);
+    }
+    
+    c.setMaxAge(60 * 24);
+    response.addCookie(c);
     // todo: Sjekk om det er parametre i requesten og legg isåfall til varen i handlekurven
 %>
 
@@ -51,7 +74,11 @@
                 <% 
                     List<String> varer = Vareutvalg.getVareliste();
                     for(int i=0; i<varer.size(); i++) { 
-                        out.print("<option>" + varer.get(i) + "</option>");
+                        if (varer.get(i).equals(c.getValue())){
+                            out.print("<option selected='selected'>" + varer.get(i) + "</option>");
+                        }else{
+                            out.print("<option>" + varer.get(i) + "</option>");
+                        }
                     }
                 %>
             </select>
