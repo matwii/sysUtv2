@@ -6,10 +6,15 @@
 /* global fast */
 $(document).ready(function(){
    $("#box").mouseover(function() {
-        var dWidth = $(document).width(), 
-            dHeight = $(document).height(),
+        var dWidth = window.innerWidth, 
+            dHeight = window.innerHeight,
             nextX = Math.floor(Math.random() * dWidth),
             nextY = Math.floor(Math.random() * dHeight);
-        $("#box").animate({ left: nextX + 'px', top: nextY + 'px' }, "fast");
-    }); 
+        $("#box").stop()
+        $("#box").animate({ left: nextX + 'px', top: nextY + 'px' }, 1000, 'linear');
+    });
+    
+    $("#box").click(function(){
+       $("#box").stop().fadeOut(500); 
+    });
 });
