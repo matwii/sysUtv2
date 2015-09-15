@@ -14,16 +14,16 @@ public class Bean {
     private String familyName;
     private int age;
     private String gender;
-    private String spam;
+    private boolean spam;
     
     public Bean(){
     }
     
-    public String getSpam(){
+    public boolean getSpam(){
         return spam;
     }
     
-    public void setSpam(String spam){
+    public void setSpam(boolean spam){
         this.spam = spam;
     }
     

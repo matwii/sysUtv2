@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="bean" class="beans.Bean" scope="session"/>
-<jsp:setProperty name="bean" property="*"/>
+<jsp:setProperty name="bean" property="spam"/>
 <!DOCTYPE html>
 <html>
     <head>

@@ -16,8 +16,10 @@
     <body>
         <a href="http://localhost:8080/Oving7/person.jsp">return to previous site</a><br>
         <form action="http://localhost:8080/Oving7/summary.jsp" method="get">
-            Recieve spam?<input type="checkbox" name="spam" value="yes"><br>
+            Recieve spam?<input type="checkbox" id="chck" name="spam" value="true"><br>
+            <input type="hidden" value="false" name="spam"/>
             <input type="submit" value="submit">
+                
         </form>
     </body>
 </html>
